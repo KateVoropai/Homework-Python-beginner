@@ -15,11 +15,11 @@ print(index_of_nums(my_list))
 
 # 2 решение
 def index_of_nums(some_list, target):
-    d = {}
+    nums = []
     for index, value in enumerate(some_list):
-            if target - value in d:
+            if target - value in nums:
                 return some_list.index(target - value), index
-            d[value] = index
+            nums.append(value)
 
 entered_list = input("Введите список чисел: ").split()
 target = int(input())
