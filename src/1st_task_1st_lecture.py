@@ -1,4 +1,3 @@
-# 1 решение
 def maxi_xor(some_list):
     max_xor = 0
     for i in my_list:
@@ -10,11 +9,8 @@ def maxi_xor(some_list):
 
 entered_list = input("Введите список чисел: ").split()
 my_list = [int(i) for i in entered_list]
-print(maxi_xor(my_list))
 
-
-# 2 решение
-def maxi_xor(some_list):
+def maxi_xor_optimized(some_list):
     maxi_num = max(some_list)
     maxi_xor = 0
     for i in some_list:
@@ -24,8 +20,9 @@ def maxi_xor(some_list):
     return maxi_xor
 
 entered_list = input("Введите список чисел: ").split()
-my_list = [int(i) for i in entered_list]
+my_list_ = [int(i) for i in entered_list]
 print(maxi_xor(my_list))
+print(maxi_xor_optimized(my_list_))
 
 
 
