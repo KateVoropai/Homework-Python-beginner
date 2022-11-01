@@ -5,9 +5,6 @@ def duplicate_element(some_list):
             duplicate.append(i)
     return duplicate
             
-entered_list = input("Введите список чисел: ").split()
-my_list = [int(i) for i in entered_list]
-
 def duplicate_element_opt(some_list):
     some_list.sort()
     for i in range(0,len(some_list)-1):
@@ -15,6 +12,6 @@ def duplicate_element_opt(some_list):
             return some_list[i]
         
 entered_list = input("Введите список чисел: ").split()
-my_list_ = [int(i) for i in entered_list]
+my_list = [int(i) for i in entered_list]
 print(duplicate_element(my_list))
-print(duplicate_element_opt(my_list_))
+print(duplicate_element_opt(my_list))
