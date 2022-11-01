@@ -1,4 +1,4 @@
-def Total_money_we_have_is(friendsAndCash):
+def total_money_we_have_is(friendsAndCash):
     total_money= 0
     for v in friendsAndCash.values():
         cash = int(v[:-1])      #Убираю знак доллара и привожу число из str в int
@@ -24,6 +24,6 @@ def modified_friendsAndCash(friendsAndCash):
 friends = input("Введите имена друзей: ").split()
 cash_friends = input("Введите наличные деньги друзей в '$': ").split()
 friendsAndCash = dict(zip(friends, cash_friends))
-print(Total_money_we_have_is(friendsAndCash))
+print(total_money_we_have_is(friendsAndCash))
 print(maximum_cash(friendsAndCash))
 print(modified_friendsAndCash(friendsAndCash))
