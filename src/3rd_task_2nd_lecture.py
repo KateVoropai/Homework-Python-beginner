@@ -15,11 +15,10 @@ def maximum_cash(friendsAndCash):
     return name_friend
     
 def modified_friendsAndCash(friendsAndCash):
-    modified_dict = {}
-    for k, v in friendsAndCash.items():
-        modified_dict[v] = k
+    modified_dict = {value: key for key, value in friendsAndCash.items()}
+    
     return modified_dict
-
+    
 
 friends = input("Введите имена друзей: ").split()
 cash_friends = input("Введите наличные деньги друзей в '$': ").split()
