@@ -1,30 +1,18 @@
-def not_read_m_l(people, mandatory_literature):
-    people_not_read_m_l = set()
-    for author in mandatory_literature:
-        if author in read_literature:
-            people_not_read_m_l |= set(read_literature[author])
-    return people - people_not_read_m_l
-        
+def people_not_read_required_literature(required_literature, literature):
+    people_read_required_lit = set()
+    for book in required_literature:
+        people_read_required_lit.add(literature[book])
+    people_not_read_required_lit = people - people_read_required_lit
+    return people_not_read_required_lit
+    
+    
+people = {"Васильева В.М.", "Новиков С.В.", "Артемов А.И.", "Филиппова А.Н.", "Мартынова В.И.", 
+        "Романова С.М.", "Носков Г.B.", "Журавлева М.Е.", "Сойко В.В.", "Козлов С.Д."}
 
-people = {"Васильева В.М.", "Новиков С.В.", "Артемов А.И.",
-          "Филиппова А.Н.", "Мартынова В.И.", "Романова С.М.", "Носков Г.B.",
-          "Журавлева М.Е.", "Сойко В.В.", "Козлов С.Д."}
+read_literature = {'book1', 'book2', 'book3', 'book4', 'book5', 'book6', 'book7', 'book8', 'book9', 'book10'}
 
-read_literature = {'Брэдбери Р. Каникулы':("Новиков С.В.", "Козлов С.Д.", "Сойко В.В."),
-            'Гоголь Н. Ревизор':("Филиппова А.Н.", "Мартынова В.И.", "Романова С.М."),
-            'Грин А. Алые паруса':("Артемов А.И."),
-            'Куприн А. Изумруд':("Романова С.М.", "Васильева В.М."),
-            'По Э. Лягушонок':("Журавлева М.Е.", "Сойко В.В.", "Васильева В.М.", "Новиков С.В."),
-            'Свифт Д. Путешествия Гулливера':("Филиппова А.Н.", "Мартынова В.И.", "Романова С.М."),
-            'Твен М. История с привидением': ("Козлов С.Д.", "Артемов А.И."),
-            'Тургенев И. Ася':("Васильева В.М.","Романова С.М.", "Носков Г.B"), 
-}
+required_literature = {'book1', 'book3', 'book5', 'book7', 'book10'}
 
-literature = {'Тургенев И. Ася', 'Пушкин А. Пиковая дама', 'Толстой Л. Детство', 
-            'Гоголь Н. Ревизор', 'Куприн А. Изумруд', 'Чехов А. Переполох', 
-            'Твен М. История с привидением', 'По Э. Лягушонок', 'Брэдбери Р. Каникулы',
-            'Грин А. Алые паруса', 'Свифт Д. Путешествия Гулливера'}
+literature = dict(zip(read_literature, people))
 
-mandatory_literature = {'Толстой Л. Детство', 'Гоголь Н. Ревизор', 'Куприн А. Изумруд', 'Твен М. История с привидением'}
-
-print(not_read_m_l(people, mandatory_literature))
+print(people_not_read_required_literature(required_literature, literature))
