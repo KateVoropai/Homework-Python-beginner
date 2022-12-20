@@ -5,5 +5,5 @@ def print_number_in_reverse_order(number: int) -> int:
     print(f"{number % 10}", end = '')
     return print_number_in_reverse_order(number // 10)
             
-number = 12345
+number = int(input())
 print(print_number_in_reverse_order(number))

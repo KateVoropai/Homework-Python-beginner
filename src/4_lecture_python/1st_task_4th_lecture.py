@@ -6,5 +6,5 @@ def print_all_digits_of_number(number: int) -> int:
     print(first_digit)
     return print_all_digits_of_number(number % 10**(n - 1))
             
-number = 12345
+number = int(input())
 print(print_all_digits_of_number(number))
