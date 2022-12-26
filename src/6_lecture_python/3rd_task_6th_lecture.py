@@ -1,15 +1,13 @@
-def permutation_string(lst, i):
-    if i == len(lst):
-        return ''
-    else:
-        for j in range(len(lst)):
-            if i == j:
-                continue
-            lst[i], lst[j] = lst[j], lst[i]
-            print(*lst)
-    return permutation_string(lst, i + 1)
-
-my_string = '123'
-lst = list(my_string)
+def string_permutations(lst: list[str], i: int) -> str: 
+    if i == len(my_string): 
+        print(''.join(lst))
+    else: 
+        for j in range(i, len(my_string)): 
+            lst[i], lst[j] = lst[j], lst[i] 
+            string_permutations(lst, i+1) 
+            lst[i], lst[j] = lst[j], lst[i]  
+  
+my_string = input()
+lst = list(my_string) 
 i = 0
-print(permutation_string(lst, i))
+print(string_permutations(lst, i))
