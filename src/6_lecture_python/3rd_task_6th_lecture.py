@@ -6,6 +6,7 @@ def string_permutations(lst: list[str], i: int) -> str:
             lst[i], lst[j] = lst[j], lst[i] 
             string_permutations(lst, i+1) 
             lst[i], lst[j] = lst[j], lst[i]  
+    return ''
   
 my_string = input()
 lst = list(my_string) 
