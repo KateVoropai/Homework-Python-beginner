@@ -1,14 +1,13 @@
-def string_permutations(lst: list[str], i: int) -> str: 
-    if i == len(my_string): 
-        print(''.join(lst))
-    else: 
-        for j in range(i, len(my_string)): 
-            lst[i], lst[j] = lst[j], lst[i] 
-            string_permutations(lst, i+1) 
-            lst[i], lst[j] = lst[j], lst[i]  
+def permutation_string(string: str, permutation = '') -> str:
+    if len(string) == 0:
+        print(permutation)
+        
+    for i in range(len(string)):
+        new_permutation = permutation + string[i]
+        new_string = string[:i] + string[i+1:]
+        permutation_string(new_string, new_permutation)
+    
     return ''
-  
-my_string = input()
-lst = list(my_string) 
-i = 0
-print(string_permutations(lst, i))
+    
+string = input()
+print(permutation_string(string))
