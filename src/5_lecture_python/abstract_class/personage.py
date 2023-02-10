@@ -11,8 +11,10 @@ class Personage(ABC):
     def __str__(self):
         pass 
 
-    def attack(self, enemy):
-        enemy._take_damage(self.weapon_damage)
+    @abstractmethod
+    def attack(self):
+        pass 
 
     def _take_damage(self, damage):
         self._health -= damage
+        return self._health
