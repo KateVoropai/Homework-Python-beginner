@@ -8,10 +8,12 @@ class SuperHero(Personage):
         self.defense = defense
 
     def __str__(self):
-        return  f"{self.name} is a SuperHero" \
-                f"Weapon: {self.weapon_name}" \
-                f"Current Health: {self._health}" \
-                f"Armor: {self.armor_name}"
+        return  f"""
+                {self.name} is a SuperHero
+                Weapon: {self.weapon_name}
+                Current Health: {self._health}
+                Armor: {self.armor_name}
+"""
 
     def attack(self):
         pass 

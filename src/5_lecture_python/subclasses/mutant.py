@@ -7,9 +7,11 @@ class Mutant(Personage):
         self.hand_strike = 5
     
     def __str__(self):
-        return  f"{self.name} is a Mutant" \
-                f"Weapon: {self.weapon_name}" \
-                f"Current Health: {self._health}" 
+        return  f"""
+                {self.name} is a Mutant
+                Weapon: {self.weapon_name}
+                Current Health: {self._health}
+"""
 
     def attack(self, enemy):
         enemy._take_damage(self.weapon_damage)

@@ -7,9 +7,11 @@ class Transformer(Personage):
         self.living_metal = living_metal
 
     def __str__(self):
-        return  f"{self.name} is a Transformer" \
-                f"Weapon: {self.weapon_name}" \
-                f"Current Health: {self._health}"
+        return  f"""
+                {self.name} is a Transformer
+                Weapon: {self.weapon_name}
+                Current Health: {self._health}
+"""
 
     
     def attack(self):

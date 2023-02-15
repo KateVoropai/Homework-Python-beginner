@@ -8,9 +8,11 @@ class Vampire(Personage):
         self.bite = 4
 
     def __str__(self):
-        return  f"{self.name} is a Vampire" \
-                f"Weapon: {self.weapon_name}" \
-                f"Current Health: {self._health}" 
+        return  f""""
+                {self.name} is a Vampire
+                Weapon: {self.weapon_name}
+                Current Health: {self._health}
+"""
 
     def drink_blood(self, regeneration):
         self._health += regeneration
