@@ -9,12 +9,9 @@ class Personage(ABC):
 
     @abstractmethod        
     def __str__(self):
-        pass 
+        pass
 
     @abstractmethod
     def attack(self):
         pass 
 
-    def _take_damage(self, damage):
-        self._health -= damage
-        return self._health

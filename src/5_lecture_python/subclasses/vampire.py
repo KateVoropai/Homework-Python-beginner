@@ -3,12 +3,12 @@ from abstract_class.personage import Personage
 class Vampire(Personage):
 
     def __init__(self, name, weapon_name, weapon_damage):
-        super().__init__(name, weapon_name, weapon_damage, health=170)
+        super().__init__(name, weapon_name, weapon_damage, health= 170)
         self.regeneration = 5
         self.bite = 4
 
     def __str__(self):
-        return  f""""
+        return  f"""
                 {self.name} is a Vampire
                 Weapon: {self.weapon_name}
                 Current Health: {self._health}
@@ -19,12 +19,13 @@ class Vampire(Personage):
         return self._health
     
     def attack(self, enemy):
-        enemy._take_damage(self.weapon_damage)
+        enemy._health -= self.weapon_damage
         print(f"{self.name} strikes {enemy.name} with {self.weapon_name}!")
         
-        enemy._take_damage(self.bite)
-        print(f"{self.name} bites {enemy.self}!")
-
+        enemy._health -= self.bite
+        self.drink_blood(self.regeneration)
+        print(f"{self.name} bites {enemy.name}!")
+        
     
 
 

@@ -3,25 +3,22 @@ from units.vampires import baron_blood
 from units.mutants import hulk
 
 
-def battle(self, baron_blood, hulk):
+def battle(baron_blood, hulk1):
 
     print("Starting battle between")
     print(baron_blood.__str__())
-    print(hulk.__str__())
+    print(hulk1.__str__())
 
-    while baron_blood.health > 0 and hulk.health > 0:
+    while baron_blood._health > 0 and hulk1._health > 0:
         n = randint(1, 2)
         if n == 1:
-            baron_blood.attack(hulk)
+            baron_blood.attack(hulk1)
         else:
-            hulk.attack(baron_blood)  
-    if baron_blood.health > hulk.health:
+            hulk1.attack(baron_blood)  
+    if baron_blood._health > hulk1._health:
         print(f"{baron_blood.name} won!")
-    elif hulk.health > baron_blood.health:
-        print(f" {hulk.name} won!")
+    elif hulk1._health > baron_blood._health:
+        print(f" {hulk1.name} won!")
 
 
-if __name__ == "__main__":
-    baron_blood
-    hulk
-    battle(baron_blood, hulk)
+battle(baron_blood, hulk)
