@@ -1,5 +1,8 @@
 from subclasses.vampire import Vampire
 
+class BaronBlood(Vampire):
 
-baron_blood = Vampire("Baron Blood", weapon_name="Vampire sword", weapon_damage=5)
+    def __init__(self, name= "Baron Blood", weapon= "Vampire sword", weapon_damage= 5):
+        super().__init__(name, weapon, weapon_damage)
+
  

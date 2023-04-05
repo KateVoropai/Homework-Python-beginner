@@ -1,5 +1,10 @@
 from subclasses.vampire import Vampire
 
-morbius = Vampire("Morbius", weapon_name="Blade", weapon_damage=6)
+class Morbius(Vampire):
+
+    def __init__(self, name= "Morbius", weapon= "Blade", weapon_damage= 6):
+        super().__init__(name, weapon, weapon_damage)
+
+#morbius = Morbius()
 
   

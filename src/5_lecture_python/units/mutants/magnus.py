@@ -1,3 +1,9 @@
 from subclasses.mutant import Mutant
 
-magnus = Mutant("Magnus", weapon_name= "Sword", weapon_damage=6)
+class Magnus(Mutant):
+    
+    def __init__(self, name= "Magnus", weapon= "Sword", weapon_damage= 6):
+        super().__init__(name, weapon, weapon_damage)
+
+
+#magnus = Mutant()
