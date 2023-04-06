@@ -1,4 +1,6 @@
 from subclasses.transformer import Transformer
 
-bumblebee = Transformer("Bumblebee", weapon_name="Blaster", weapon_damage=9, health=180)
-   
+class Bumblebee(Transformer):
+
+    def __init__(self, name= "Bumblebee", weapon= "Blaster", weapon_damage= 9, living_metal= 6):
+        super().__init__(name, weapon, weapon_damage, living_metal)

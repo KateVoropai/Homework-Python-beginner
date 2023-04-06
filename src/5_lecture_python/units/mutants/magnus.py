@@ -6,4 +6,4 @@ class Magnus(Mutant):
         super().__init__(name, weapon, weapon_damage)
 
 
-#magnus = Mutant()
+

@@ -2,7 +2,7 @@ from abstract_class.personage import Personage
 
 class SuperHero(Personage):
     
-    def __init__(self, name, weapon, weapon_damage, armor_name, defense= 15):
+    def __init__(self, name, weapon, weapon_damage, armor_name, defense):
         super().__init__(name, weapon, weapon_damage, health= 170)
         self.armor_name = armor_name
         self.defense = defense
@@ -30,6 +30,10 @@ class SuperHero(Personage):
     def attack_weapons(self, enemy):
         enemy._health -= self.weapon_damage
         print(f"{self.name} наносит удар {self.weapon}")
+
+    def defend(self):
+        self._health += self.defense
+        print(f"{self.name} защищается от удара с помощью {self.armor_name}")
         
 
     
