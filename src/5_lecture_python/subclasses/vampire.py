@@ -31,7 +31,7 @@ class Vampire(Personage):
     
     def attack_weapons(self, enemy):
         enemy._health -= self.weapon_damage
-        #print(f"{self.name} наносит удар {self.weapon}")
+       
 
     def drink_blood(self):
         self._health += 5    

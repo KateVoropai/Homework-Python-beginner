@@ -18,20 +18,25 @@ def battle(first_fighter, second_fighter):
     while first_fighter._health > 0 and second_fighter._health > 0:
         n = randint(1, 2)
         if n == 1:
-            first_fighter.attack_weapons(second_fighter)
-            print_results(first_fighter, second_fighter)
-        else:
-            second_fighter.attack_weapons(first_fighter)  
-            print_results(first_fighter, second_fighter)
+            attacker = first_fighter
+            defender = second_fighter
+            attacker.attack_weapons(defender)
+            print_results(attacker, defender)
+        elif n == 2:
+            attacker = second_fighter
+            defender = first_fighter
+            attacker.attack_weapons(defender)  
+            print_results(attacker, defender)
     if first_fighter._health > second_fighter._health:
         print(f"{first_fighter.name} победил!")
     elif second_fighter._health > first_fighter._health:
         print(f"{second_fighter.name} победил!")
 
-def print_results(first_fighter, second_fighter):
-    print(f"{first_fighter.name} наносит удар {second_fighter.weapon}")
-    print(f"{first_fighter.name}: {first_fighter._health} здоровья")
-    print(f"{second_fighter.name}: {second_fighter._health} здоровья")
+def print_results(attacker, defender):
+    print(f"{attacker.name} наносит удар сопернику с помощью {attacker.weapon}!")
+    print(f"{defender.name}: осталось {defender._health} здоровья")
+
+
 
 list_heroes = {
             '1': Hulk,
@@ -44,16 +49,19 @@ list_heroes = {
             '8': Megatron
 } 
 
-input_first_player_choice = input("Введите цифру первого игрока (Hulk - 1, Magnus -2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
-input_second_player_choice = input("Введите цифру второго игрока (Hulk - 1, Magnus -2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
+input_first_player_choice = input("Введите цифру первого игрока (Hulk - 1, Magnus - 2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
+input_second_player_choice = input("Введите цифру второго игрока (Hulk - 1, Magnus - 2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
 
 try:
     first_fighter = list_heroes.get(input_first_player_choice)()
+except:
+    print("Ошибка ввода")
+    input_first_player_choice = input("Введите цифру первого игрока (Hulk - 1, Magnus - 2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
+try:
     second_fighter = list_heroes.get(input_second_player_choice)()
 except:
     print("Ошибка ввода")
-    input_first_player_choice = input("Введите цифру первого игрока (Hulk - 1, Magnus -2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
-    input_second_player_choice = input("Введите цифру второго игрока (Hulk - 1, Magnus -2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
+    input_second_player_choice = input("Введите цифру второго игрока (Hulk - 1, Magnus - 2,  Baron_Blood - 3, Morbius - 4, Captain_America - 5, Iron_Man - 6, Bumblebee - 7, Megatron - 8): ")
 
 first_fighter, second_fighter = list_heroes.get(input_first_player_choice)(), list_heroes.get(input_second_player_choice)()
 

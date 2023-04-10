@@ -31,8 +31,7 @@ class Mutant(Personage):
 
     def attack_weapons(self, enemy):
         enemy._health -= self.weapon_damage
-        #print(f"{self.name} наносит удар {self.weapon}")
-
+        
     def regenerate(self):
         self._health += 4
         
