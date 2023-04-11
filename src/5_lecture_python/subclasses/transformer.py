@@ -12,24 +12,23 @@ class Transformer(Personage):
                 Weapon: {self.weapon}
                 Current Health: {self._health}
 """
-
-    
     def attack_left_arm(self, enemy):
-        enemy.health -= 2
+        enemy._health -= 12
 
     def attack_right_arm(self, enemy):
-        enemy.health -= 2
+        enemy._health -= 16
 
     def attack_left_leg(self, enemy):
-        enemy.health -= 3
+        enemy._health -= 14
 
     def attack_right_leg(self, enemy):
-        enemy.health -= 3 
+        enemy._health -= 15
 
     def attack_weapons(self, enemy):
         enemy._health -= self.weapon_damage
-       
+
     def repair(self):
         self._health += self.living_metal
-        print(f"{self.name} починил себя")
+        print(f"{self.name} починил себя!")
+        print(f"{self.name}: {self._health} здоровья")
         

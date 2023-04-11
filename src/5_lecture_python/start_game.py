@@ -15,18 +15,59 @@ def battle(first_fighter, second_fighter):
     print(first_fighter.__str__())
     print(second_fighter.__str__())
 
+    attacker = None
+    defender = None
+
+    n = randint(1, 2)
+    if n == 1:
+        attacker = first_fighter
+        defender = second_fighter
+    else:
+        attacker = second_fighter
+        defender = first_fighter
+
+    print(f"{attacker.name} атакует первым!")
+
     while first_fighter._health > 0 and second_fighter._health > 0:
-        n = randint(1, 2)
-        if n == 1:
-            attacker = first_fighter
-            defender = second_fighter
+        action_attacker = input("Чем нападающий наносит удар оружием - 1, левой/правой рукой - 2/3, левой/правой ногой -4/5: ")
+        if action_attacker == '1':
             attacker.attack_weapons(defender)
             print_results(attacker, defender)
-        elif n == 2:
-            attacker = second_fighter
-            defender = first_fighter
-            attacker.attack_weapons(defender)  
-            print_results(attacker, defender)
+        elif action_attacker == '2':
+            attacker.attack_left_arm(defender)
+            print(f"{attacker.name} наносит удар левой рукой")
+            print(f"{defender.name}: осталось {defender._health} здоровья")
+            print(f"{attacker.name}: осталось {attacker._health} здоровья")
+        elif action_attacker == '3':
+            attacker.attack_right_arm(defender)
+            print(f"{attacker.name} наносит удар правой рукой")
+            print(f"{defender.name}: осталось {defender._health} здоровья")
+            print(f"{attacker.name}: осталось {attacker._health} здоровья")
+        elif action_attacker == '4':
+            attacker.attack_left_leg(defender)
+            print(f"{attacker.name} наносит удар левой ногой")
+            print(f"{defender.name}: осталось {defender._health} здоровья")
+            print(f"{attacker.name}: осталось {attacker._health} здоровья")
+        else:
+            attacker.attack_right_leg(defender)
+            print(f"{attacker.name} наносит удар правой ногой")
+            print(f"{defender.name}: осталось {defender._health} здоровья")
+            print(f"{attacker.name}: осталось {attacker._health} здоровья")
+        
+        action_defender = randint(1, 2)
+        if action_defender == 1:
+            print(f"{defender.name} держит удар!")
+            if isinstance(defender, CaptainAmerica) or isinstance(defender, IronMan):
+                defender.defend()
+            elif isinstance(defender, Hulk) or isinstance(defender, Magnus):
+                defender.regenerate()
+            elif isinstance(defender, Bumblebee) or isinstance(defender, Megatron):
+                defender.repair()
+            elif isinstance(defender, BaronBlood) or isinstance(defender, Morbius):
+                defender.drink_blood()
+
+        attacker, defender = defender, attacker
+
     if first_fighter._health > second_fighter._health:
         print(f"{first_fighter.name} победил!")
     elif second_fighter._health > first_fighter._health:
@@ -35,7 +76,7 @@ def battle(first_fighter, second_fighter):
 def print_results(attacker, defender):
     print(f"{attacker.name} наносит удар сопернику с помощью {attacker.weapon}!")
     print(f"{defender.name}: осталось {defender._health} здоровья")
-
+    print(f"{attacker.name}: осталось {attacker._health} здоровья")
 
 
 list_heroes = {

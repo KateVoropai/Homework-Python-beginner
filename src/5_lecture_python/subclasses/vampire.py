@@ -5,7 +5,6 @@ class Vampire(Personage):
     def __init__(self, name, weapon, weapon_damage, health= 170):
         super().__init__(name, weapon, weapon_damage, health)
         
-
     def __str__(self):
         return  f"""
                 {self.name} is a Vampire
@@ -14,27 +13,24 @@ class Vampire(Personage):
 """
     
     def attack_left_arm(self, enemy):
-        enemy._health -= 1
-        print(f"{self.name} наносит удар левой рукой")
+        enemy._health -= 11
 
     def attack_right_arm(self, enemy):
-        enemy._health -= 1
-        print(f"{self.name} наносит удар правой рукой")
+        enemy._health -= 12
 
     def attack_left_leg(self, enemy):
-        enemy._health -= 2
-        print(f"{self.name} наносит удар левой ногой")
+        enemy._health -= 14
 
     def attack_right_leg(self, enemy):
-        enemy._health -= 2
-        print(f"{self.name} наносит удар правой ногой")
+        enemy._health -= 15
     
     def attack_weapons(self, enemy):
         enemy._health -= self.weapon_damage
-       
-
+    
     def drink_blood(self):
-        self._health += 5    
+        self._health += 5  
+        print(f"{self.name} пьет кровь!") 
+        print(f"{self.name}: {self._health} здоровья") 
         
     
 
