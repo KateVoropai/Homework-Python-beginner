@@ -27,9 +27,10 @@ def battle(first_fighter, second_fighter):
         defender = first_fighter
 
     print(f"{attacker.name} атакует первым!")
-
-    while first_fighter._health > 0 and second_fighter._health > 0:
-        action_attacker = input("Чем нападающий наносит удар оружием - 1, левой/правой рукой - 2/3, левой/правой ногой -4/5: ")
+    
+    stop = True
+    while first_fighter._health > 0 and second_fighter._health > 0 and stop:
+        action_attacker = input("Чем нанести удар? Оружием - 1, Левой/Правой рукой - 2/3, Левой/Правой ногой -4/5: ")
         if action_attacker == '1':
             attacker.attack_weapons(defender)
             print_results(attacker, defender)
@@ -65,8 +66,13 @@ def battle(first_fighter, second_fighter):
                 defender.repair()
             elif isinstance(defender, BaronBlood) or isinstance(defender, Morbius):
                 defender.drink_blood()
+        else:
+            answer = input("Продолжаем бой? (да/нет): ")
+            if answer == 'нет':
+                stop = False
 
         attacker, defender = defender, attacker
+        print(f"Теперь атакует {attacker.name}!")
 
     if first_fighter._health > second_fighter._health:
         print(f"{first_fighter.name} победил!")
