@@ -29,8 +29,8 @@ class Vampire(Personage):
     
     def drink_blood(self):
         self._health += 5  
-        print(f"{self.name} пьет кровь!") 
-        print(f"{self.name}: {self._health} здоровья") 
+        print(f"{self.name} пьет кровь! Текущее здоровье {self._health}")
+
         
     
 

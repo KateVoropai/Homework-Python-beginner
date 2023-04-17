@@ -28,8 +28,8 @@ class Mutant(Personage):
 
     def regenerate(self):
         self._health += 4
-        print(f"{self.name} запустил процесс регенерации!")
-        print(f"{self.name}: {self._health} здоровья")
+        print(f"{self.name} запустил процесс регенерации! Текущее здоровье {self._health}")
+
         
 
 

@@ -2,8 +2,8 @@ from abstract_class.personage import Personage
 
 class Transformer(Personage):
     
-    def __init__(self, name, weapon, weapon_damage, living_metal):
-        super().__init__(name, weapon, weapon_damage, health= 180)
+    def __init__(self, name, weapon, weapon_damage, living_metal, health= 180):
+        super().__init__(name, weapon, weapon_damage, health)
         self.living_metal = living_metal
 
     def __str__(self):
@@ -29,6 +29,6 @@ class Transformer(Personage):
 
     def repair(self):
         self._health += self.living_metal
-        print(f"{self.name} починил себя!")
-        print(f"{self.name}: {self._health} здоровья")
+        print(f"{self.name} починил себя! Текущее здоровье {self._health}")
+        
         
