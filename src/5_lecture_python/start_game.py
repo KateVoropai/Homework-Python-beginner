@@ -8,6 +8,39 @@ from units.super_heroes.iron_man import IronMan
 from units.transformers.bumblbee import Bumblebee
 from units.transformers.megatron import Megatron
 
+list_heroes = {
+            '1': Hulk,
+            '2': Magnus,
+            '3': BaronBlood,
+            '4': Morbius,
+            '5': CaptainAmerica,
+            '6': IronMan,
+            '7': Bumblebee,
+            '8': Megatron
+} 
+
+for kye, value in list_heroes.items():
+    heroes = list_heroes.get(kye)()
+    name_heroes = heroes.name
+    print(kye, name_heroes)
+
+input_first_player_choice = input("Введите цифру для первого игрока: ")
+input_second_player_choice = input("Введите цифру для второго игрока: ")
+
+try:
+    first_fighter = list_heroes.get(input_first_player_choice)()
+except:
+    print("Ошибка ввода")
+    input_first_player_choice = input("Введите цифру для первого игрока: ")
+
+try:
+    second_fighter = list_heroes.get(input_second_player_choice)()
+except:
+    print("Ошибка ввода")
+    input_second_player_choice = input("Введите цифру для второго игрока: ")
+
+first_fighter, second_fighter = list_heroes.get(input_first_player_choice)(), list_heroes.get(input_second_player_choice)()
+
 
 def battle(first_fighter, second_fighter):
 
@@ -98,40 +131,6 @@ def print_results(attacker, defender, action_attacker):
     if action_attacker == '5':
         print(f"{attacker.name} наносит удар правой ногой!")
         print(f"{defender.name}: текущее здоровье {defender._health}")
-
-list_heroes = {
-            '1': Hulk,
-            '2': Magnus,
-            '3': BaronBlood,
-            '4': Morbius,
-            '5': CaptainAmerica,
-            '6': IronMan,
-            '7': Bumblebee,
-            '8': Megatron
-} 
-
-for kye, value in list_heroes.items():
-    heroes = list_heroes.get(kye)()
-    name_heroes = heroes.name
-    print(kye, name_heroes)
-
-input_first_player_choice = input("Введите цифру для первого игрока: ")
-input_second_player_choice = input("Введите цифру для второго игрока: ")
-
-try:
-    first_fighter = list_heroes.get(input_first_player_choice)()
-except:
-    print("Ошибка ввода")
-    input_first_player_choice = input("Введите цифру для первого игрока: ")
-
-try:
-    second_fighter = list_heroes.get(input_second_player_choice)()
-except:
-    print("Ошибка ввода")
-    input_second_player_choice = input("Введите цифру для второго игрока: ")
-
-first_fighter, second_fighter = list_heroes.get(input_first_player_choice)(), list_heroes.get(input_second_player_choice)()
-
 
 if __name__ == '__main__':
     
