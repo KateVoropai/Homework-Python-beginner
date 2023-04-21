@@ -133,5 +133,4 @@ def print_results(attacker, defender, action_attacker):
         print(f"{defender.name}: текущее здоровье {defender._health}")
 
 if __name__ == '__main__':
-    
     battle(first_fighter, second_fighter)
