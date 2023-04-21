@@ -2,7 +2,7 @@ from abstract_class.personage import Personage
 
 class Vampire(Personage):
 
-    def __init__(self, name, weapon, weapon_damage, health= 170):
+    def __init__(self, name, weapon, weapon_damage, health= 130):
         super().__init__(name, weapon, weapon_damage, health)
         
     def __str__(self):
@@ -28,7 +28,7 @@ class Vampire(Personage):
         enemy._health -= self.weapon_damage
     
     def drink_blood(self):
-        self._health += 5  
+        self._health += 4 
         print(f"{self.name} пьет кровь! Текущее здоровье {self._health}")
 
         

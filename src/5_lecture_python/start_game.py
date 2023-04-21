@@ -30,58 +30,74 @@ def battle(first_fighter, second_fighter):
     
     stop = True
     while first_fighter._health > 0 and second_fighter._health > 0 and stop:
+    
         action_attacker = input("Чем нанести удар? Оружием - 1, Левой/Правой рукой - 2/3, Левой/Правой ногой -4/5: ")
+        if action_attacker not in '12345' or not action_attacker.isdigit:
+            print("Ошибка ввода! Введите правильную цифру!")
+            action_attacker = input("Чем нанести удар? Оружием - 1, Левой/Правой рукой - 2/3, Левой/Правой ногой -4/5: ")
+
         action_defender = randint(1, 30)
         if action_defender > 15:
             if action_attacker == '1':
                 attacker.attack_weapons(defender)
-                print_results(attacker, defender)
+                print_results(attacker, defender, action_attacker)
             elif action_attacker == '2':
                 attacker.attack_left_arm(defender)
-                print(f"{attacker.name} наносит удар левой рукой!")
-                print(f"{defender.name}: текущее здоровье {defender._health}")
+                print_results(attacker, defender, action_attacker)
             elif action_attacker == '3':
                 attacker.attack_right_arm(defender)
-                print(f"{attacker.name} наносит удар правой рукой!")
-                print(f"{defender.name}: текущее здоровье {defender._health}")
+                print_results(attacker, defender, action_attacker)
             elif action_attacker == '4':
                 attacker.attack_left_leg(defender)
-                print(f"{attacker.name} наносит удар левой ногой!")
-                print(f"{defender.name}: текущее здоровье {defender._health}")
+                print_results(attacker, defender, action_attacker)
             elif action_attacker == '5':
                 attacker.attack_right_leg(defender)
-                print(f"{attacker.name} наносит удар правой ногой!")
-                print(f"{defender.name}: текущее здоровье {defender._health}")
-        
-            answer = input("Продолжать бой? (да/нет): ")
-            if answer == 'нет':
-                stop = False
+                print_results(attacker, defender, action_attacker)
+            
+            if defender._health > 0:
+                answer = input("Продолжать бой? (да/нет): ")
+                if answer != 'да' and answer != 'нет':
+                    print("Введите правильный ответ!")
+                    answer = input("Продолжать бой? (да/нет): ")
+                if answer == 'нет':
+                    stop = False
         
         if action_defender <= 15:
             print(f"{defender.name} уклоняется от удара!")
-            if (isinstance(defender, CaptainAmerica) or isinstance(defender, IronMan)) and defender._health < 140:
+            if (isinstance(defender, CaptainAmerica) or isinstance(defender, IronMan)) and defender._health < 100:
                 defender.defend()
-            elif (isinstance(defender, Hulk) or isinstance(defender, Magnus)) and defender._health < 130:
+            elif (isinstance(defender, Hulk) or isinstance(defender, Magnus)) and defender._health < 90:
                 defender.regenerate()
-            elif (isinstance(defender, Bumblebee) or isinstance(defender, Megatron)) and defender._health < 160:
+            elif (isinstance(defender, Bumblebee) or isinstance(defender, Megatron)) and defender._health < 100:
                 defender.repair()
-            elif (isinstance(defender, BaronBlood) or isinstance(defender, Morbius)) and defender._health < 150:
+            elif (isinstance(defender, BaronBlood) or isinstance(defender, Morbius)) and defender._health < 110:
                 defender.drink_blood()
         
-
-        attacker, defender = defender, attacker
-        print(f"Атакует {attacker.name}!")
+        if attacker._health > 0 and stop:
+            attacker, defender = defender, attacker
+            print(f"Атакует {attacker.name}!")
 
     if first_fighter._health > second_fighter._health:
         print(f"{first_fighter.name} победил!")
     elif second_fighter._health > first_fighter._health:
         print(f"{second_fighter.name} победил!")
 
-def print_results(attacker, defender):
-    print(f"{attacker.name} наносит удар сопернику с помощью {attacker.weapon}!")
-    print(f"{defender.name}: текущее здоровье {defender._health}")
-    
-
+def print_results(attacker, defender, action_attacker):
+    if action_attacker == '1':
+        print(f"{attacker.name} наносит удар сопернику с помощью {attacker.weapon}!")
+        print(f"{defender.name}: текущее здоровье {defender._health}")
+    if action_attacker == '2':
+        print(f"{attacker.name} наносит удар левой рукой!")
+        print(f"{defender.name}: текущее здоровье {defender._health}")
+    if action_attacker == '3':
+        print(f"{attacker.name} наносит удар правой рукой!")
+        print(f"{defender.name}: текущее здоровье {defender._health}")
+    if action_attacker == '4':
+        print(f"{attacker.name} наносит удар левой ногой!")
+        print(f"{defender.name}: текущее здоровье {defender._health}")
+    if action_attacker == '5':
+        print(f"{attacker.name} наносит удар правой ногой!")
+        print(f"{defender.name}: текущее здоровье {defender._health}")
 
 list_heroes = {
             '1': Hulk,
@@ -107,6 +123,7 @@ try:
 except:
     print("Ошибка ввода")
     input_first_player_choice = input("Введите цифру для первого игрока: ")
+
 try:
     second_fighter = list_heroes.get(input_second_player_choice)()
 except:

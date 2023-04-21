@@ -2,7 +2,7 @@ from abstract_class.personage import Personage
 
 class Mutant(Personage):
 
-    def __init__(self, name, weapon, weapon_damage, health= 150):
+    def __init__(self, name, weapon, weapon_damage, health= 110):
         super().__init__(name, weapon, weapon_damage, health)
     
     def __str__(self):
@@ -27,7 +27,7 @@ class Mutant(Personage):
         enemy._health -= self.weapon_damage
 
     def regenerate(self):
-        self._health += 4
+        self._health += 3
         print(f"{self.name} запустил процесс регенерации! Текущее здоровье {self._health}")
 
         

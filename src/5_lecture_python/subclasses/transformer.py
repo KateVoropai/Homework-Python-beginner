@@ -2,7 +2,7 @@ from abstract_class.personage import Personage
 
 class Transformer(Personage):
     
-    def __init__(self, name, weapon, weapon_damage, living_metal, health= 180):
+    def __init__(self, name, weapon, weapon_damage, living_metal, health= 120):
         super().__init__(name, weapon, weapon_damage, health)
         self.living_metal = living_metal
 
