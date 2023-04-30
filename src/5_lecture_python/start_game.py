@@ -47,19 +47,21 @@ def action_defender(defender):
     }
     return getattr(defender, defend_fighter.get(defender.name))()
 
+def action_attacker(attacker, defender):
+    attack_fighter = choice(['attack_weapons', 'attack_left_arm', 'attack_right_arm', 'attack_left_leg', 'attack_right_leg'])
+    getattr(attacker, attack_fighter)(defender)
+    print(*getattr(attacker, 'print_info_attack')(defender, attack_fighter), sep= '\n')
+    return ''
+
+# def print_result(attacker, defender):
+#     print(*getattr(attacker, 'print_info_attack')(defender, attack_fighter), sep= '\n')
+#     return attack_fighter
+
 def who_winner(first_fighter, second_fighter):
     if first_fighter.health > second_fighter.health:
         return f"{first_fighter.name} победил!"
     elif second_fighter.health > first_fighter.health:
         return f"{second_fighter.name} победил!"
-    
-def print_result(attacker, defender):
-    attack_fighter = choice(['attack_weapons', 'attack_left_arm', 'attack_right_arm', 'attack_left_leg', 'attack_right_leg'])
-    print(*getattr(attacker, 'print_info_attack')(defender, attack_fighter), sep= '\n')
-    return attack_fighter
-
-def action_attacker(attacker, defender):
-    return getattr(attacker, print_result(attacker, defender))(defender)
     
 def main(first_fighter, second_fighter):
 
@@ -78,19 +80,20 @@ def main(first_fighter, second_fighter):
     while first_fighter.health > 0 and second_fighter.health > 0 and True:
         
         action = randint(1, 30)
-        if defender.health > 0:
-            if action < 15:
-                action_attacker(attacker, defender)
-            elif action > 15:
-                print(f"{defender.name} уклоняется от удара!")
-                action_defender(defender)
-        else:
-            False
 
-        if defender.health > 0 and True:
+        if action > 15:
+            print(f"{defender.name} уклоняется от удара!")
+            action_defender(defender)
+    
+        elif action < 15:
+            action_attacker(attacker, defender)
+        
+        if defender.health < 0:
+            False
+        else:
             attacker, defender = defender, attacker
             print(f"Атакует {attacker.name}!")
-
+            
     print(who_winner(first_fighter, second_fighter))
 
 
