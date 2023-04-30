@@ -9,26 +9,26 @@ class Mutant(Personage):
         return  f"""
                 {self.name} is a Mutant
                 Weapon: {self.weapon}
-                Current Health: {self._health}
+                Current Health: {self.health}
 """
     def attack_left_arm(self, enemy):
-        enemy._health -= 11
+        enemy.health -= 14
 
     def attack_right_arm(self, enemy):
-        enemy._health -= 15
-    
+        enemy.health -= 15
+
     def attack_left_leg(self, enemy):
-        enemy._health -= 13
+        enemy.health -= 13
 
     def attack_right_leg(self, enemy):
-        enemy._health -= 17
+        enemy.health -= 17
 
     def attack_weapons(self, enemy):
-        enemy._health -= self.weapon_damage
+        enemy.health -= self.weapon_damage
 
     def regenerate(self):
         self._health += 3
-        print(f"{self.name} запустил процесс регенерации! Текущее здоровье {self._health}")
+
 
         
 

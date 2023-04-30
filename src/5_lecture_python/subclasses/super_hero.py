@@ -11,27 +11,27 @@ class SuperHero(Personage):
         return  f"""
                 {self.name} is a SuperHero
                 Weapon: {self.weapon}
-                Current Health: {self._health}
+                Current Health: {self.health}
                 Armor: {self.armor_name}
 """
     def attack_left_arm(self, enemy):
-        enemy._health -= 12
-
+        enemy.health -= 12
+        
     def attack_right_arm(self, enemy):
-        enemy._health -= 18
+        enemy.health -= 18
 
     def attack_left_leg(self, enemy):
-        enemy._health -= 13
+        enemy.health -= 13
 
     def attack_right_leg(self, enemy):
-        enemy._health -= 17 
+        enemy.health -= 17 
 
     def attack_weapons(self, enemy):
-        enemy._health -= self.weapon_damage
+        enemy.health -= self.weapon_damage
     
     def defend(self):
-        self._health += self.defense
-        print(f"И защищается с помощью {self.armor_name}! Текущее здоровье {self._health}")
+        self.health += self.defense
+    
 
 
         
