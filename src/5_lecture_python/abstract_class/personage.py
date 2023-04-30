@@ -69,12 +69,12 @@ class Personage(ABC):
         return print_defend
     
     # @property
-    # def get_point(self):
+    # def point(self):
     #     return self.__point
     
-    # @get_point.setter
-    # def get_point(self, point):
-    #     self.__point += point
+    # @point.setter
+    # def point(self, point):
+    #     self.__point = point
 
     def super_ability(self, enemy):
         pass
