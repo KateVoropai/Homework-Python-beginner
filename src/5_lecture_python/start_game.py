@@ -36,32 +36,37 @@ def check_input_players(input_player_choice):
 
 def action_defender(defender):
     defend_fighter = {
-        'Captain America': 'defend', 
-        'Iron Man': 'defend', 
+        'Captain America': 'armor_defend', 
+        'Iron Man': 'armor_defend', 
         'Hulk': 'regenerate', 
         'Magnus': 'regenerate', 
         'Megatron': 'repair', 
         'Bumblebee': 'repair', 
         'Baron Blood': 'drink_blood',
         'Morbius': 'drink_blood'
-    }
-    return getattr(defender, defend_fighter.get(defender.name))()
+        }
+
+    getattr(defender, defend_fighter.get(defender.name))()
+    print(getattr(defender, 'print_info_defend')(defend_fighter.get(defender.name)))
+    return ''
 
 def action_attacker(attacker, defender):
     attack_fighter = choice(['attack_weapons', 'attack_left_arm', 'attack_right_arm', 'attack_left_leg', 'attack_right_leg'])
     getattr(attacker, attack_fighter)(defender)
-    print(*getattr(attacker, 'print_info_attack')(defender, attack_fighter), sep= '\n')
+    print(getattr(attacker, 'print_info_attack')(defender, attack_fighter))
     return ''
 
-# def print_result(attacker, defender):
-#     print(*getattr(attacker, 'print_info_attack')(defender, attack_fighter), sep= '\n')
-#     return attack_fighter
+def action_super_ability(attacker, defender):
+    getattr(attacker, 'super_ability')(defender)
+    print(getattr(attacker, 'print_info_super_ability')(defender))
+    return ''
 
 def who_winner(first_fighter, second_fighter):
     if first_fighter.health > second_fighter.health:
-        return f"{first_fighter.name} победил!"
+        return f"{first_fighter.name} победил! Количество очков: {first_fighter.amount_points}"
+    
     elif second_fighter.health > first_fighter.health:
-        return f"{second_fighter.name} победил!"
+        return f"{second_fighter.name} победил! Количество очков: {second_fighter.amount_points}"
     
 def main(first_fighter, second_fighter):
 
@@ -84,10 +89,11 @@ def main(first_fighter, second_fighter):
         if action > 15:
             print(f"{defender.name} уклоняется от удара!")
             action_defender(defender)
-    
-        elif action < 15:
+        elif 1 < action <= 7:
             action_attacker(attacker, defender)
-        
+        elif 7 < action <= 15:
+            action_super_ability(attacker, defender)
+
         if defender.health < 0:
             False
         else:
