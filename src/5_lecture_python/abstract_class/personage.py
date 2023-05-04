@@ -64,7 +64,7 @@ class Personage(ABC):
     def print_info_defend(self, name_attack):
         print_defend = {
                 'regenerate': f"{self.name} запустил процесс регенерации! Здоровье: {self.health}",
-                'repair': f"{self.name} починил себя! Здоровье: {self.health}",
+                'repair': f"{self.name} трансформировал дополнительную броню! Здоровье: {self.health}",
                 'drink_blood': f"{self.name} пьет кровь! Здоровье: {self.health}",
                 'armor_defend': f"{self.name} защищается с помощью брони! Здоровье: {self.health}"
                 }

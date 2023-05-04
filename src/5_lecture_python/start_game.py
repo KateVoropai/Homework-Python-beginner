@@ -1,4 +1,5 @@
 from random import randint, choice
+
 from units.vampires.baron_blood import BaronBlood
 from units.vampires.morbius import Morbius
 from units.mutants.hulk import Hulk
@@ -61,7 +62,7 @@ def action_super_ability(attacker, defender):
     print(getattr(attacker, 'print_info_super_ability')(defender))
     return ''
 
-def who_winner(first_fighter, second_fighter):
+def check_winner(first_fighter, second_fighter):
     if first_fighter.health > second_fighter.health:
         return f"{first_fighter.name} победил! Количество очков: {first_fighter.amount_points}"
     
@@ -89,7 +90,7 @@ def main(first_fighter, second_fighter):
         if action > 15:
             print(f"{defender.name} уклоняется от удара!")
             action_defender(defender)
-        elif 1 < action <= 7:
+        elif 1 <= action <= 7:
             action_attacker(attacker, defender)
         elif 7 < action <= 15:
             action_super_ability(attacker, defender)
@@ -100,7 +101,7 @@ def main(first_fighter, second_fighter):
             attacker, defender = defender, attacker
             print(f"Атакует {attacker.name}!")
             
-    print(who_winner(first_fighter, second_fighter))
+    print(check_winner(first_fighter, second_fighter))
 
 
 if __name__ == '__main__':
