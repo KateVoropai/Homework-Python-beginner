@@ -2,8 +2,8 @@ from abstract_class.personage import Personage
 
 class SuperHero(Personage):
     
-    def __init__(self, name, weapon, weapon_damage, armor_name, defense, point, health= 120, amount_points= 0):
-        super().__init__(name, weapon, weapon_damage, point, health, amount_points)
+    def __init__(self, name, weapon, weapon_damage, health, point, armor_name, defense, amount_points= 0):
+        super().__init__(name, weapon, weapon_damage, health, point, amount_points)
         self.armor_name = armor_name
         self.defense = defense
 

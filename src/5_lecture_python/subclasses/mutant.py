@@ -3,7 +3,7 @@ from abstract_class.personage import Personage
 class Mutant(Personage):
 
     def __init__(self, name, weapon, weapon_damage, point, health= 110, amount_points= 0):
-        super().__init__(name, weapon, weapon_damage, point, health, amount_points)
+        super().__init__(name, weapon, weapon_damage, health, point, amount_points)
         
     def __str__(self):
         return  f"""
