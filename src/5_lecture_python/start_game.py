@@ -1,34 +1,42 @@
 from random import randint, choice
 
-from units.vampires.baron_blood import BaronBlood
-from units.vampires.morbius import Morbius
-from units.mutants.hulk import Hulk
-from units.mutants.magnus import Magnus
-from units.super_heroes.captain_america import CaptainAmerica
-from units.super_heroes.iron_man import IronMan
-from units.transformers.bumblbee import Bumblebee
-from units.transformers.megatron import Megatron
+from units.vampires.baron_blood import baron_blood, dracula
+from units.vampires.morbius import morbius, seline
+from units.mutants.hulk import hulk, red_hulk
+from units.mutants.magnus import magnus, magneto
+from units.super_heroes.captain_america import captain_america, tor
+from units.super_heroes.iron_man import iron_man, spider_man
+from units.transformers.bumblbee import bumblebee, optimus_prime
+from units.transformers.megatron import megatron, follen
 
 list_heroes = {
-            '1': Hulk,
-            '2': Magnus,
-            '3': BaronBlood,
-            '4': Morbius,
-            '5': CaptainAmerica,
-            '6': IronMan,
-            '7': Bumblebee,
-            '8': Megatron
+            '1': hulk,
+            '2': red_hulk,
+            '3': magnus,
+            '4': magneto,
+            '5': captain_america,
+            '6': tor,
+            '7': iron_man,
+            '8': spider_man,
+            '9': bumblebee,
+            '10': optimus_prime,
+            '11': megatron,
+            '12': follen,
+            '13': baron_blood,
+            '14': dracula,
+            '15': morbius,
+            '16': seline
 } 
 
 for kye, value in list_heroes.items():
-    heroes = list_heroes.get(kye)()
+    heroes = list_heroes.get(kye)
     name_heroes = heroes.name
     print(kye, name_heroes)
 
 def check_input_players(input_player_choice):
     flag = True
     while flag == True:
-        if input_player_choice.isdigit() and 0 < int(input_player_choice) < 9: 
+        if input_player_choice.isdigit() and 0 < int(input_player_choice) < 17: 
             fighter = input_player_choice
             flag = False
         else:
@@ -36,31 +44,14 @@ def check_input_players(input_player_choice):
     return  fighter
 
 def action_defender(defender):
-    defend_fighter = {
-        'Captain America': 'armor_defend', 
-        'Iron Man': 'armor_defend', 
-        'Hulk': 'regenerate', 
-        'Magnus': 'regenerate', 
-        'Megatron': 'repair', 
-        'Bumblebee': 'repair', 
-        'Baron Blood': 'drink_blood',
-        'Morbius': 'drink_blood'
-        }
-
-    getattr(defender, defend_fighter.get(defender.name))()
-    print(getattr(defender, 'print_info_defend')(defend_fighter.get(defender.name)))
-    return ''
+    return getattr(defender, 'defend')()
 
 def action_attacker(attacker, defender):
     attack_fighter = choice(['attack_weapons', 'attack_left_arm', 'attack_right_arm', 'attack_left_leg', 'attack_right_leg'])
-    getattr(attacker, attack_fighter)(defender)
-    print(getattr(attacker, 'print_info_attack')(defender, attack_fighter))
-    return ''
+    return getattr(attacker, attack_fighter)(defender)
 
 def action_super_ability(attacker, defender):
-    getattr(attacker, 'super_ability')(defender)
-    print(getattr(attacker, 'print_info_super_ability')(defender))
-    return ''
+    return getattr(attacker, 'super_ability')(defender)
 
 def check_winner(first_fighter, second_fighter):
     if first_fighter.health > second_fighter.health:
@@ -105,7 +96,7 @@ def main(first_fighter, second_fighter):
 
 
 if __name__ == '__main__':
-    first_fighter = list_heroes.get(check_input_players(input("Введите цифру для первого игрока: ")))()
-    second_fighter = list_heroes.get(check_input_players(input("Введите цифру для второго игрока: ")))()
+    first_fighter = list_heroes.get(check_input_players(input("Введите цифру для первого игрока: ")))
+    second_fighter = list_heroes.get(check_input_players(input("Введите цифру для второго игрока: ")))
 
     main(first_fighter, second_fighter)

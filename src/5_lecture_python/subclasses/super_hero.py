@@ -2,8 +2,8 @@ from abstract_class.personage import Personage
 
 class SuperHero(Personage):
     
-    def __init__(self, name, weapon, weapon_damage, health, point, armor_name, defense, amount_points= 0):
-        super().__init__(name, weapon, weapon_damage, health, point, amount_points)
+    def __init__(self, name, weapon, weapon_damage, damage, health, point, armor_name, defense, amount_points= 0):
+        super().__init__(name, weapon, weapon_damage, damage, health, point, amount_points)
         self.armor_name = armor_name
         self.defense = defense
 
@@ -15,31 +15,26 @@ class SuperHero(Personage):
                 Armor: {self.armor_name}
 """
     def attack_left_arm(self, enemy):
-        enemy.health -= 12
+        super().attack_left_arm(enemy)  
         self.scoring(self.point)
         
     def attack_right_arm(self, enemy):
-        enemy.health -= 18
+        super().attack_right_arm(enemy)
         self.scoring((self.point)*3)
 
     def attack_left_leg(self, enemy):
-        enemy.health -= 13
+        super().attack_left_leg(enemy)
         self.scoring(self.point)
 
     def attack_right_leg(self, enemy):
-        enemy.health -= 17 
+        super().attack_right_leg(enemy)
         self.scoring(self.point)
 
     def attack_weapons(self, enemy):
-        enemy.health -= self.weapon_damage
+        super().attack_weapons(enemy)
         self.scoring((self.point)*2)
 
-    def armor_defend(self):
+    def defend(self):
         self.health += self.defense
+        self.print_defend_super_hero()
 
-
-        
-
-    
-
-    

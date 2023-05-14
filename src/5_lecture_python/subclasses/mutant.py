@@ -2,8 +2,8 @@ from abstract_class.personage import Personage
 
 class Mutant(Personage):
 
-    def __init__(self, name, weapon, weapon_damage, point, health= 110, amount_points= 0):
-        super().__init__(name, weapon, weapon_damage, health, point, amount_points)
+    def __init__(self, name, weapon, weapon_damage, damage, point, health= 110, amount_points= 0):
+        super().__init__(name, weapon, weapon_damage, damage, health, point, amount_points)
         
     def __str__(self):
         return  f"""
@@ -12,27 +12,28 @@ class Mutant(Personage):
                 Current Health: {self.health}
 """
     def attack_left_arm(self, enemy):
-        enemy.health -= 14
+        super().attack_left_arm(enemy)
         self.scoring((self.point*2))
 
     def attack_right_arm(self, enemy):
-        enemy.health -= 15
+        super().attack_right_arm(enemy)
         self.scoring(self.point)
 
     def attack_left_leg(self, enemy):
-        enemy.health -= 13
+        super().attack_left_leg(enemy)
         self.scoring(self.point)
 
     def attack_right_leg(self, enemy):
-        enemy.health -= 17
+        super().attack_right_leg(enemy)
         self.scoring(self.point)
 
     def attack_weapons(self, enemy):
-        enemy.health -= self.weapon_damage
+        super().attack_weapons(enemy)
         self.scoring((self.point)*3)
 
-    def regenerate(self):
+    def defend(self):
         self.health += 3
+        self.print_defenf_mutant()
 
 
         
