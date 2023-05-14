@@ -1,7 +1,7 @@
 from random import randint, choice
 
 from units.vampires.baron_blood import baron_blood, dracula
-from units.vampires.morbius import morbius, seline
+from units.vampires.morbius import morbius, damon
 from units.mutants.hulk import hulk, red_hulk
 from units.mutants.magnus import magnus, magneto
 from units.super_heroes.captain_america import captain_america, tor
@@ -25,7 +25,7 @@ list_heroes = {
             '13': baron_blood,
             '14': dracula,
             '15': morbius,
-            '16': seline
+            '16': damon
 } 
 
 for kye, value in list_heroes.items():
@@ -79,18 +79,18 @@ def main(first_fighter, second_fighter):
         action = randint(1, 30)
 
         if action > 15:
-            print(f"{defender.name} уклоняется от удара!")
+            defender.print_defender()
             action_defender(defender)
         elif 1 <= action <= 7:
             action_attacker(attacker, defender)
         elif 7 < action <= 15:
             action_super_ability(attacker, defender)
 
-        if defender.health < 0:
+        if defender.health == 0:
             False
         else:
             attacker, defender = defender, attacker
-            print(f"Атакует {attacker.name}!")
+            attacker.print_attacker()
             
     print(check_winner(first_fighter, second_fighter))
 

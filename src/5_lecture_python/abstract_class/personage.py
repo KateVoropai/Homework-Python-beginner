@@ -19,30 +19,40 @@ class Personage(ABC):
     @abstractmethod
     def attack_left_arm(self, enemy):
         enemy.health -= self.amount_damage()
+        if enemy.health < 0:
+            enemy.health = 0 
         self.print_attack_left_arm(enemy)
         pass 
 
     @abstractmethod
     def attack_right_arm(self, enemy):
         enemy.health -= self.amount_damage()
+        if enemy.health < 0:
+            enemy.health = 0 
         self.print_attack_right_arm(enemy)
         pass 
 
     @abstractmethod
     def attack_left_leg(self, enemy):
         enemy.health -= self.amount_damage()
+        if enemy.health < 0:
+            enemy.health = 0 
         self.print_attack_left_leg(enemy)
         pass 
 
     @abstractmethod
     def attack_right_leg(self, enemy):
         enemy.health -= self.amount_damage()
+        if enemy.health < 0:
+            enemy.health = 0 
         self.print_attack_right_leg(enemy)
         pass 
 
     @abstractmethod
     def attack_weapons(self, enemy):
         enemy.health -= self.weapon_damage
+        if enemy.health < 0:
+            enemy.health = 0 
         self.print_attack_weapons(enemy)
         pass
     
@@ -59,6 +69,8 @@ class Personage(ABC):
     
     def super_ability(self, enemy):
         enemy.health -= self.max_damage
+        if enemy.health < 0:
+            enemy.health = 0 
 
     @property
     def health(self):
@@ -77,36 +89,36 @@ class Personage(ABC):
         self._point = point
     
     def print_attack_weapons(self, enemy):
-        print(f"{self.name} наносит удар с помощью {self.weapon}!" '\n'
+        print(f"{self.name} наносит удар сопернику с помощью {self.weapon}!" '\n'
             f"{enemy.name}: здоровье {enemy.health}")
         
     def print_attack_left_arm(self, enemy):
-        print(f"{self.name} наносит удар левой рукой!" '\n'
+        print(f"{self.name} наносит удар сопернику левой рукой!" '\n'
             f"{enemy.name}: здоровье {enemy.health}")
         
     def print_attack_right_arm(self, enemy):
-        print(f"{self.name} наносит удар правой рукой!" '\n'
+        print(f"{self.name} наносит удар сопернику правой рукой!" '\n'
             f"{enemy.name}: здоровье {enemy.health}")
     
     def print_attack_left_leg(self, enemy):
-        print(f"{self.name} наносит удар левой ногой!" '\n'
+        print(f"{self.name} наносит удар сопернику левой ногой!" '\n'
             f"{enemy.name}: здоровье {enemy.health}")
     
     def print_attack_right_leg(self, enemy):
-        print(f"{self.name} наносит удар правой ногой!" '\n'
+        print(f"{self.name} наносит удар сопернику правой ногой!" '\n'
             f"{enemy.name}: здоровье {enemy.health}")
         
     def print_defenf_mutant(self):
-        print(f"{self.name} запустил процесс регенерации! Здоровье: {self.health}")
+        print(f"{self.name} запустил процесс регенерации! {self.name}: здоровье {self.health}")
 
     def print_defend_transformer(self):
-        print(f"{self.name} трансформировал дополнительную броню! Здоровье: {self.health}")
+        print(f"{self.name} трансформировал дополнительную броню! {self.name}: здоровье {self.health}")
 
     def print_defend_vampire(self):
-        print(f"{self.name} пьет кровь! Здоровье: {self.health}")
+        print(f"{self.name} пьет кровь! {self.name}: здоровье {self.health}")
 
     def print_defend_super_hero(self):
-        print(f"{self.name} защищается с помощью {self.armor_name}! Здоровье: {self.health}")  
+        print(f"{self.name} защищается с помощью {self.armor_name}! {self.name}: здоровье {self.health}")  
 
     def print_ability_hulk(self, fighter):
         print(f"{self.name} загипнотизировал {fighter.name}!" '\n'
@@ -139,3 +151,9 @@ class Personage(ABC):
     def print_ability_morbius(self, fighter):
         print(f"{self.name} бьёт в левый глаз {fighter.name}!" '\n'
             f"{fighter.name}: здоровье {fighter.health}")
+        
+    def print_attacker(self):
+        print(f"Атакует {self.name}!")
+
+    def print_defender(self):
+        print(f"{self.name} уклоняется от удара!")
