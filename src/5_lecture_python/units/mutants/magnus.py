@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.mutant import Mutant
 
 class Magnus(Mutant):
     
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, point: int, health: int):
+    def __init__(self, name: Optional[str] = "Magnus", weapon: Optional[str] = "Sword", weapon_damage: Optional[int] = 16, max_damage: Optional[int] = 19, point: Optional[int] = 4, health: Optional[int] = 119):
         super().__init__(name, weapon, weapon_damage, max_damage, point, health)
 
     def super_ability(self, enemy):

@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.vampire import Vampire
 
 class BaronBlood(Vampire):
 
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, health: int,  point: int):
+    def __init__(self, name: Optional[str] = "Baron Blood", weapon: Optional[str] = "Vampire sword", weapon_damage: Optional[int] = 15, max_damage: Optional[int] = 20, health: Optional[int] = 132,  point: Optional[int] = 4):
         super().__init__(name, weapon, weapon_damage, max_damage, health, point)
 
     def super_ability(self, enemy):

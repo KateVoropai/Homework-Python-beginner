@@ -28,17 +28,16 @@ list_heroes = {
             '16': damon
 } 
 
-for kye, value in list_heroes.items():
-    heroes = list_heroes.get(kye)
+for key, value in list_heroes.items():
+    heroes = list_heroes.get(key)
     name_heroes = heroes.name
-    print(kye, name_heroes)
+    print(key, name_heroes)
 
 def check_input_players(input_player_choice):
-    flag = True
-    while flag == True:
+    while True:
         if input_player_choice.isdigit() and 0 < int(input_player_choice) < 17: 
             fighter = input_player_choice
-            flag = False
+            break
         else:
             input_player_choice = input("Ошибка ввода! Введите соответствующую цифру для игрока: ")     
     return  fighter
@@ -55,10 +54,10 @@ def action_super_ability(attacker, defender):
 
 def check_winner(first_fighter, second_fighter):
     if first_fighter.health > second_fighter.health:
-        return f"{first_fighter.name} победил! Количество очков: {first_fighter.amount_points}"
+        print(f"{first_fighter.name} победил! Количество очков: {first_fighter.amount_points}")
     
     elif second_fighter.health > first_fighter.health:
-        return f"{second_fighter.name} победил! Количество очков: {second_fighter.amount_points}"
+        print(f"{second_fighter.name} победил! Количество очков: {second_fighter.amount_points}")
     
 def main(first_fighter, second_fighter):
 
@@ -92,7 +91,7 @@ def main(first_fighter, second_fighter):
             attacker, defender = defender, attacker
             attacker.print_attacker()
             
-    print(check_winner(first_fighter, second_fighter))
+    check_winner(first_fighter, second_fighter)
 
 
 if __name__ == '__main__':

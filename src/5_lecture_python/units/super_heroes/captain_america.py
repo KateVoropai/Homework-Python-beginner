@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.super_hero import SuperHero
 
 class CaptainAmerica(SuperHero):
 
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, health: int, point: int, armor_name: str, defense: int):
+    def __init__(self, name: Optional[str] = "Captain America", weapon: Optional[str] = "Infinity Gauntlet", weapon_damage: Optional[int] = 18, max_damage: Optional[int] = 18, health: Optional[int] = 121, point: Optional[int] = 6, armor_name: Optional[str] = "Shield", defense: Optional[int] = 4):
         super().__init__(name, weapon, weapon_damage, max_damage, health, point, armor_name, defense)
 
     def super_ability(self, enemy):

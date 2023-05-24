@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.transformer import Transformer
 
 class Megatron(Transformer):
 
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, living_metal: int, health: int, point: int):
+    def __init__(self, name: Optional[str] = "Megatron", weapon: Optional[str] = "Plasma cannon", weapon_damage: Optional[int] = 18, max_damage: Optional[int] = 16, living_metal: Optional[int] = 3, health: Optional[int] = 120, point: Optional[int] = 7):
         super().__init__(name, weapon, weapon_damage, max_damage, living_metal, health, point)
 
     def super_ability(self, enemy):

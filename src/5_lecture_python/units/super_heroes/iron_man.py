@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.super_hero import SuperHero
 
 class IronMan(SuperHero):
 
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, health: int, point: int, armor_name: str, defense: int):
+    def __init__(self, name: Optional[str] = "Iron Man", weapon: Optional[str] = "Plasma cutting", weapon_damage: Optional[int] = 19, max_damage: Optional[int] = 17, health: Optional[int] = 118, point: Optional[int] = 7, armor_name: Optional[str] = "Mark LXXXV", defense: Optional[int] = 3):
         super().__init__(name, weapon, weapon_damage, max_damage, health, point, armor_name, defense)
 
     def super_ability(self, enemy):

@@ -1,8 +1,10 @@
+from typing import Optional
+
 from subclasses.transformer import Transformer
 
 class Bumblebee(Transformer):
 
-    def __init__(self, name: str, weapon: str, weapon_damage: int, max_damage: int, living_metal: int, health: int, point: int):
+    def __init__(self, name: Optional[str] = "Bumblebee", weapon: Optional[str] = "Blaster", weapon_damage: Optional[int] = 19, max_damage: Optional[int] = 17, living_metal: Optional[int] = 6, health: Optional[int] = 135, point: Optional[int] = 8):
         super().__init__(name, weapon, weapon_damage, max_damage, living_metal, health, point)
 
     def super_ability(self, enemy):
