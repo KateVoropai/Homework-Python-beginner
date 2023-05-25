@@ -5,7 +5,7 @@ def fill_cells(N, i, result):
         result.append(i)
         if i == 2 and i != N:
             result.append(-(i-1))
-        if 2 < i and i != N:
+        if i > 2 and i != N:
             result.append(1)
             result.append(-(i-1))
             result.append(-1)
